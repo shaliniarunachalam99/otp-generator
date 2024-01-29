@@ -1,0 +1,23 @@
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+    server-item-url: ${SWAGGER_CONTEXT_PATH}
+
+spring:
+  datasource:
+    url: ${DB_HOST}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+app:
+  otp-generator:
+    length: ${OTP_LENGTH:5}
+    scheduler:
+      invalidate-cron: ${INVALIDATE_OTP_CRON:0 0/1 * * * ?}
+      invalidate-cron-enabled: ${INVALIDATE_OTP_ENABLED:false}
